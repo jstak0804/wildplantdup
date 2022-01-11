@@ -5,8 +5,8 @@
 }
 
 .oneCard {
-  color: rgba(255, 255, 255, 0.911);
-  background-color: rgba(255, 255, 255, 0.884);
+  color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 }
 /** 카드 꼭지점 각도 조절 */
 .id {
@@ -43,9 +43,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: calc(10px + 2vmin);
   color: gray;
 }

@@ -26,7 +26,6 @@ const Result = ({ imageUrl, onClick }) => {
                 padding: '5px',
                 minWidth: '1550px',
                 maxWidth: '1550px',
-                marginTop: '50px',
                 marginLeft: '50px',
                 marginRight: '50px',
                 color: 'gray',
@@ -37,7 +36,6 @@ const Result = ({ imageUrl, onClick }) => {
                 type="primary"
                 onClick={onClick}
                 style={{
-                  marginTop: '20px',
                   float: 'left',
                   marginLeft: '85px',
                 }}
