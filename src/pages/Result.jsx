@@ -7,34 +7,43 @@ const Result = ({ imageUrl, onClick }) => {
   return (
     <>
       <meta name="veiwport" content="width=devicewidth, initial-scale=1.0" />
-      <Space direction="horizontal" wrap="True" size={'small'}>
+      <Space direction="horizontal" wrap="false" size={'small'}>
         <Row gutter={16}>
           {/* <Col span={24}> */}
-
+          {/* 
           <Button
             type="primary"
             onClick={onClick}
-            style={{ marginLeft: '100px' }}
+            style={{ marginLeft: '150px', marginTop: '20px' }}
           >
             이미지 다시 선택하기
-          </Button>
-          <p></p>
+          </Button> */}
           <Col span={24}>
             <Card
+              className="oneCard"
               style={{
                 height: '450px',
                 padding: '5px',
-                minWidth: '1500px',
-                maxWidth: '1500px',
+                minWidth: '1550px',
+                maxWidth: '1550px',
                 marginTop: '50px',
                 marginLeft: '50px',
                 marginRight: '50px',
-                alignContent: 'center',
-
                 color: 'gray',
               }}
               bordered={false}
             >
+              <Button
+                type="primary"
+                onClick={onClick}
+                style={{
+                  marginTop: '20px',
+                  float: 'left',
+                  marginLeft: '85px',
+                }}
+              >
+                이미지 다시 선택하기
+              </Button>
               <Space direction="horizontal" wrap="True" size={'small'}>
                 <Card
                   width="100px"
@@ -44,7 +53,7 @@ const Result = ({ imageUrl, onClick }) => {
                     maxWidth: '330px',
                     height: '330px',
                     boxShadow: ' 0px 0px 20px 0px gray',
-                    marginLeft: '50px',
+                    marginLeft: '25px',
                     marginRight: '50px',
                   }}
                   title="이미지"
@@ -59,7 +68,7 @@ const Result = ({ imageUrl, onClick }) => {
                     maxWidth: '500px',
                     height: '330px',
                     boxShadow: ' 0px 0px 20px 0px gray',
-                    marginRight: '50px',
+                    marginRight: '25px',
                   }}
                 >
                   <Image height={200} src="https://ifh.cc/g/YbTFm6.jpg" />
@@ -69,8 +78,8 @@ const Result = ({ imageUrl, onClick }) => {
                   title="성분분석 이미지"
                   style={{
                     boxShadow: ' 0px 0px 20px 0px gray',
-                    minwidth: '100%',
-                    maxwidth: '400px',
+                    minwidth: '450px',
+                    maxwidth: '450px',
                     height: '330px',
 
                     marginRight: '50px',

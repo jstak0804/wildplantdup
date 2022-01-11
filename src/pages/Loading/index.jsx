@@ -110,8 +110,8 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
               boxShadow: ' 0px 0px 20px 0px gray',
               textAlign: 'center',
               placeContent: 'center',
-              minWidth: '500px',
-              maxWidth: '500px',
+              minWidth: '480px',
+              maxWidth: '200%',
               minHeight: '400px',
               maxHeight: '700px',
             }}

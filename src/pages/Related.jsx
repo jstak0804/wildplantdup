@@ -10,13 +10,12 @@ function Related() {
           style={{
             boxShadow: ' 0px 0px 20px 0px gray',
 
-            height: '300px',
-            padding: '5px',
-            minWidth: '1500px',
-            maxWidth: '1500px',
-            marginTop: '50px',
-            marginLeft: '50px',
-            marginRight: '50px',
+            height: '330px',
+            minWidth: '1325px',
+            maxWidth: '1325px',
+            marginTop: '5px',
+            marginLeft: '140px',
+            marginRight: '10px',
           }}
         >
           <Image.PreviewGroup margin={5} padding={10}>
