@@ -6,10 +6,13 @@ function Related() {
     <Row>
       <Col span={24}>
         <Card
+          className="resultCard"
           title="해당 식물 관련 이미지"
           style={{
             boxShadow: ' 0px 0px 20px 0px gray',
-
+            alignContent: 'center',
+            alignSelf: 'center',
+            alignItems: 'cemter',
             height: '330px',
             minWidth: '1325px',
             maxWidth: '1325px',

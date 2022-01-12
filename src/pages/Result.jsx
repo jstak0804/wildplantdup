@@ -21,13 +21,12 @@ const Result = ({ imageUrl, onClick }) => {
           <Col span={24}>
             <Card
               className="oneCard"
+              className="resultCard"
               style={{
                 height: '450px',
                 padding: '5px',
-                minWidth: '1550px',
-                maxWidth: '1550px',
-                marginLeft: '50px',
-                marginRight: '50px',
+                minWidth: '100%',
+                maxWidth: '100%',
                 color: 'gray',
               }}
               bordered={false}
@@ -42,6 +41,7 @@ const Result = ({ imageUrl, onClick }) => {
               >
                 이미지 다시 선택하기
               </Button>
+              <p></p>
               <Space direction="horizontal" wrap="True" size={'small'}>
                 <Card
                   width="100px"
@@ -51,8 +51,6 @@ const Result = ({ imageUrl, onClick }) => {
                     maxWidth: '330px',
                     height: '330px',
                     boxShadow: ' 0px 0px 20px 0px gray',
-                    marginLeft: '25px',
-                    marginRight: '50px',
                   }}
                   title="이미지"
                 >
@@ -66,7 +64,6 @@ const Result = ({ imageUrl, onClick }) => {
                     maxWidth: '500px',
                     height: '330px',
                     boxShadow: ' 0px 0px 20px 0px gray',
-                    marginRight: '25px',
                   }}
                 >
                   <Image height={200} src="https://ifh.cc/g/YbTFm6.jpg" />

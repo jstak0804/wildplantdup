@@ -106,12 +106,13 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
           <tr></tr>
           <Card
             title="적용이미지"
+            className="resultCard"
             style={{
               boxShadow: ' 0px 0px 20px 0px gray',
               textAlign: 'center',
               placeContent: 'center',
-              minWidth: '480px',
-              maxWidth: '200%',
+              minWidth: '100%',
+              maxWidth: '500px',
               minHeight: '400px',
               maxHeight: '700px',
             }}

@@ -3,6 +3,11 @@
   border-radius: 25px;
   margin-top: 25px;
 }
+.resultCard {
+  align-content: center;
+  align-items: center;
+  align-self: center;
+}
 
 .oneCard {
   color: rgba(255, 255, 255, 0);
@@ -14,6 +19,7 @@
 }
 .site-page-header {
   background-color: gray;
+  text-align: center;
 }
 .ant-upload {
   background-color: skyblue;
