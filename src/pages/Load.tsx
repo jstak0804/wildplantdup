@@ -5,9 +5,10 @@ import CenterContainer from '../components/CenterContainer';
 import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
 import axios from 'axios';
 
-// eslint-disable-next-line react/prop-types
-const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
-  const [imageFile, setImageFile] = useState(4);
+const Loading: React.FC = () => {
+  const [imageFile, setImageFile] = useState<File>();
+  const [imageUrl, setImageUrl] = useState('');
+  const [ai, setAi] = useState(false);
 
   const beforeUpload = useCallback((file) => {
     console.log('@@@ file', file);
@@ -15,7 +16,7 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setImageUrl(reader.result);
+        setImageUrl(reader.result?.toString() || '');
       }
     };
     reader.readAsDataURL(file);
@@ -37,8 +38,8 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
 
     const formData = new FormData();
 
-    formData.append('image', imageFile);
-    formData.append('aivalue', value);
+    formData.append('image', imageFile!);
+    formData.append('aivalue', value.toString());
 
     await axios({
       method: 'post',
@@ -46,13 +47,13 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
       data: formData,
     }).then((rsp) => {
       console.log('rsp', rsp.data);
-      onClickAI();
+      setAi(true);
     });
   }, [imageFile, value]);
 
   return (
     <>
-      <CenterContainer>
+      <CenterContainer direction="row">
         <CenterContainer direction="column">
           <Card
             title="적용이미지"
@@ -75,7 +76,6 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
                   showUploadList={false}
                   action="http://localhost:8000/imageuploadpost/"
                   beforeUpload={beforeUpload}
-                  type="image"
                 >
                   <Button
                     icon={<UploadOutlined />}
@@ -102,7 +102,6 @@ const Loading = ({ onClickAI, imageUrl, setImageUrl }) => {
               <Upload
                 showUploadList={false}
                 action="http://localhost:8000/imageuploadpost/"
-                type="image"
                 beforeUpload={beforeUpload}
               >
                 <Button icon={<UploadOutlined />} type="primary">

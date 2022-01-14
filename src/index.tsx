@@ -13,16 +13,7 @@ const Root: React.FC = () => (
   <Layout>
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Load
-              onClickAI={undefined}
-              imageUrl={undefined}
-              setImageUrl={undefined}
-            />
-          }
-        />
+        <Route path="/" element={<Load />} />
       </Routes>
     </BrowserRouter>
   </Layout>
