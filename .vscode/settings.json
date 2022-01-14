@@ -1,4 +1,4 @@
 {
   "files.eol": "\r\n",
-  "prettier.endOfLine": "auto"
+  "prettier.endOfLine": "crlf"
 }
