@@ -10,10 +10,12 @@
     "sourceMap": true,
     "baseUrl": "./",
     "strict": true,
+    "allowJs": true,
     "paths": {
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"]
     },
+    "types": ["node", "@emotion/react/types/css-prop"],
     "allowSyntheticDefaultImports": true
   },
   "include": [

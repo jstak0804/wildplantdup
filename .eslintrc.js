@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', '@emotion'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -13,9 +13,7 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {
-    'react/prop-types': ['off'],
-  },
+  rules: {},
   settings: {
     react: {
       version: 'detect',

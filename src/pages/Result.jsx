@@ -3,6 +3,7 @@ import { Button, Row, Layout, Col, Card, Image, Space } from 'antd';
 import Related from './Related';
 import './App.css';
 
+// eslint-disable-next-line react/prop-types
 const Result = ({ imageUrl, onClick }) => {
   return (
     <>
