@@ -1,6 +1,5 @@
 import { Layout as AntLayout, PageHeader } from 'antd';
 import React from 'react';
-import { Component } from 'react';
 const { Header, Content } = AntLayout;
 const Layout: React.FC = ({ children }) => (
   <AntLayout style={{ height: '100%' }}>

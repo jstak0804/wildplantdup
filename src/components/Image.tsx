@@ -10,9 +10,9 @@ interface imageProps {
 
 const ImageComponent: React.FC<imageProps> = ({ imageUrl }) => {
   return (
-    <React.Fragment>
+    <div style={{ display: 'block' }}>
       <Image width={200} height={200} src={imageUrl} fallback={defaultImage} />
-    </React.Fragment>
+    </div>
   );
 };
 export default ImageComponent;
