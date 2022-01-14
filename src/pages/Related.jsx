@@ -14,11 +14,10 @@ function Related() {
             alignSelf: 'center',
             alignItems: 'cemter',
             height: '330px',
-            minWidth: '1325px',
-            maxWidth: '1325px',
+            minWidth: '1323px',
+            maxWidth: '1323px',
             marginTop: '5px',
-            marginLeft: '140px',
-            marginRight: '10px',
+            marginLeft: '185px',
           }}
         >
           <Image.PreviewGroup margin={5} padding={10}>
