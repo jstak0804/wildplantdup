@@ -10,7 +10,9 @@ const Layout: React.FC = ({ children }) => (
         text-align="center"
       />
     </Header>
-    <Content style={{ marginTop: '50px', height: '100%' }}>{children}</Content>
+    <Content style={{ paddingTop: '50px', height: '100%', overflow: 'scroll' }}>
+      {children}
+    </Content>
   </AntLayout>
 );
 
