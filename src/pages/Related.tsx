@@ -29,11 +29,11 @@ function Related() {
       style={{
         boxShadow: ' 0px 0px 20px 0px gray',
         alignContent: 'center',
+        width: '100%',
         alignSelf: 'center',
         alignItems: 'cemter',
         minHeight: '330px',
         marginTop: '35px',
-        margin: '30px',
       }}
     >
       <StyledImage src="https://ifh.cc/g/RWIPum.jpg" />
