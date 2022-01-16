@@ -27,60 +27,66 @@ const Result: React.FC<Props> = ({ state }) => {
   };
 
   return (
-    <CenterContainer direction="row">
-      <CenterContainer direction="column">
-        <Card bordered={false}>
-          <Button
-            type="primary"
-            onClick={removeImageUrl}
-            style={{
-              marginLeft: '90px',
-            }}
-          >
-            이미지 다시 선택하기
-          </Button>
-          <div>
-            <Card
-              css={css`
-                ${CardCss}
-              `}
+    <div
+      css={css`
+        margin-bottom: 20px;
+      `}
+    >
+      <CenterContainer direction="row">
+        <CenterContainer direction="column">
+          <Card bordered={false}>
+            <Button
+              type="primary"
+              onClick={removeImageUrl}
               style={{
-                minWidth: '200px',
-                maxWidth: '330px',
+                marginLeft: '90px',
               }}
-              title="이미지"
             >
-              <Image width={200} height={200} src={imageUrl}></Image>
-            </Card>
+              이미지 다시 선택하기
+            </Button>
+            <div>
+              <Card
+                css={css`
+                  ${CardCss}
+                `}
+                style={{
+                  minWidth: '200px',
+                  maxWidth: '330px',
+                }}
+                title="이미지"
+              >
+                <Image width={200} height={200} src={imageUrl}></Image>
+              </Card>
 
-            <Card
-              title="식물 이미지"
-              css={css`
-                ${CardCss}
-              `}
-              style={{
-                maxWidth: '500px',
-              }}
-            >
-              <Image height={200} src="https://ifh.cc/g/YbTFm6.jpg" />
-            </Card>
+              <Card
+                title="식물 이미지"
+                css={css`
+                  ${CardCss}
+                `}
+                style={{
+                  maxWidth: '500px',
+                }}
+              >
+                <Image height={200} src="https://ifh.cc/g/YbTFm6.jpg" />
+              </Card>
 
-            <Card
-              title="성분분석 이미지"
-              css={css`
-                ${CardCss}
-              `}
-              style={{
-                maxWidth: '450px',
-              }}
-            >
-              <Image height={200} src="https://ifh.cc/g/bTYZS8.png" />
-            </Card>
-          </div>
-        </Card>
-        <Related />
+              <Card
+                title="성분분석 이미지"
+                css={css`
+                  ${CardCss}
+                `}
+                style={{
+                  maxWidth: '450px',
+                }}
+              >
+                <Image height={200} src="https://ifh.cc/g/bTYZS8.png" />
+              </Card>
+            </div>
+          </Card>
+          <Related />
+        </CenterContainer>
       </CenterContainer>
-    </CenterContainer>
+    </div>
   );
 };
 
