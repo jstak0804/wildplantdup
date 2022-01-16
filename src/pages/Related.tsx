@@ -20,12 +20,11 @@ function Related() {
             marginLeft: '185px',
           }}
         >
-          <Image.PreviewGroup margin={5} padding={10}>
+          <Image.PreviewGroup>
             <Space size={'large'}>
               <Image
                 width={200}
                 height={200}
-                margin={15}
                 src="https://ifh.cc/g/RWIPum.jpg"
               />
 
