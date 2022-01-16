@@ -35,15 +35,6 @@ const Result: React.FC<Props> = ({ state }) => {
       <CenterContainer direction="row">
         <CenterContainer direction="column">
           <Card bordered={false}>
-            <Button
-              type="primary"
-              onClick={removeImageUrl}
-              style={{
-                marginLeft: '90px',
-              }}
-            >
-              이미지 다시 선택하기
-            </Button>
             <div>
               <Card
                 css={css`
@@ -53,7 +44,15 @@ const Result: React.FC<Props> = ({ state }) => {
                   minWidth: '200px',
                   maxWidth: '330px',
                 }}
-                title="이미지"
+                title={
+                  <Button
+                    type="primary"
+                    onClick={removeImageUrl}
+                    style={{ marginLeft: '10px' }}
+                  >
+                    이미지 다시 선택하기
+                  </Button>
+                }
               >
                 <Image width={200} height={200} src={imageUrl}></Image>
               </Card>
