@@ -42,13 +42,16 @@ const Loading: React.FC<Props> = ({ state }) => {
     console.log('aaaaaaa', value);
     formData.append('image', imageFile!);
     formData.append('aivalue', value.toString());
-    const rsp = await axios({
-      method: 'post',
-      url: 'http://localhost:8000/imageuploadpost/',
-      data: formData,
-    });
-    setAI(true);
-    console.log('rsp', rsp.data); //debug print
+    try {
+      const rsp = await axios({
+        method: 'post',
+        url: 'http://localhost:8000/imageuploadpost/',
+        data: formData,
+      });
+      console.log('rsp', rsp.data); //debug print
+    } finally {
+      setAI(true);
+    }
   }, [imageFile, value]);
 
   return (
@@ -82,7 +85,6 @@ const Loading: React.FC<Props> = ({ state }) => {
             <Radio value={1}>열매</Radio>
             <Radio value={2}>잎 (앞면)</Radio>
             <Radio value={3}>잎 (뒷면)</Radio>
-            <Radio value={4}>Ai 자동</Radio>
           </Radio.Group>
         </Card>
       </Wrapper>

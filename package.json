@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint \"src/**/*.{jsx,js,tsx,ts}\"",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "serve -s build -l 9999"
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.32.3",
@@ -19,6 +20,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "reset.css": "^2.0.2",
+    "serve": "^13.0.2",
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
@@ -46,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "mini-css-extract-plugin": "2.4.5"
   }
 }
