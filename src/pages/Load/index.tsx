@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Button, Card, Upload, Radio } from 'antd';
 import Image from '../../components/Image';
 import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
 import axios from 'axios';
 import { StateInterface } from '@/util';
 import { Wrapper } from './wrapper';
+import Modal from 'antd/lib/modal/Modal';
 interface Props {
   state: StateInterface;
 }
@@ -19,6 +20,7 @@ function isAbleData(value: number, imageFile?: File | null): boolean {
 
 const Loading: React.FC<Props> = ({ state }) => {
   let imageFile: File | null = null;
+  const [modalSate, setModalState] = useState(false);
   const { imageUrl, setImageUrl, setAI, AI } = state;
   const [value, setValue] = React.useState(4);
   const beforeUpload = useCallback((file) => {
@@ -35,11 +37,26 @@ const Loading: React.FC<Props> = ({ state }) => {
     console.log('radio checked', e);
     setValue(e.target.value);
   }, []);
-
+  const openModal = (sendableState: number) => {
+    setModalState(true);
+    //state 10: value
+    // state 01 : image
+  };
   const handleUpload = useCallback(async () => {
     if (isAbleData(value, imageFile) == false) return;
     const formData = new FormData();
     console.log('aaaaaaa', value);
+    let notSendable = 0;
+    if (imageFile === undefined || imageFile === null) {
+      notSendable += 1;
+    }
+    if (value === undefined || value === null || value > 3) {
+      notSendable += 2;
+    }
+    if (notSendable) {
+      openModal(notSendable);
+      return;
+    }
     formData.append('image', imageFile!);
     formData.append('aivalue', value.toString());
     try {
@@ -53,6 +70,10 @@ const Loading: React.FC<Props> = ({ state }) => {
       setAI(true);
     }
   }, [imageFile, value]);
+
+  const closeModal = () => {
+    setModalState(false);
+  };
 
   return (
     <React.Fragment>
@@ -88,6 +109,13 @@ const Loading: React.FC<Props> = ({ state }) => {
           </Radio.Group>
         </Card>
       </Wrapper>
+      <Modal
+        visible={modalSate}
+        onCancel={closeModal}
+        footer={<Button onClick={closeModal}>close</Button>}
+      >
+        항목이 부족함.
+      </Modal>
     </React.Fragment>
   );
 };
