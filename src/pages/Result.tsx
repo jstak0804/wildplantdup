@@ -2,10 +2,13 @@
 /** @jsx jsx*/
 import React from 'react';
 import { jsx, css } from '@emotion/react';
-import { Button, Card, Image } from 'antd';
+import { Button, Image } from 'antd';
+import { Card } from '../components/Card';
 import CenterContainer from '../components/CenterContainer';
 import Related from './Related';
 import { StateInterface } from '../util';
+import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
+
 interface Props {
   state: StateInterface;
 }
@@ -36,6 +39,19 @@ const Result: React.FC<Props> = ({ state }) => {
         <CenterContainer direction="column">
           <Card bordered={false}>
             <div>
+              <Button
+                type="primary"
+                onClick={removeImageUrl}
+                style={{
+                  marginLeft: '10px',
+                  display: 'block',
+                  left: '10px',
+                  borderRadius: '10px',
+                }}
+              >
+                <UploadOutlined />
+                이미지 선택
+              </Button>
               <Card
                 css={css`
                   ${CardCss}
@@ -44,21 +60,13 @@ const Result: React.FC<Props> = ({ state }) => {
                   minWidth: '200px',
                   maxWidth: '330px',
                 }}
-                title={
-                  <Button
-                    type="primary"
-                    onClick={removeImageUrl}
-                    style={{ marginLeft: '10px' }}
-                  >
-                    이미지 다시 선택하기
-                  </Button>
-                }
+                title="불러온 이미지"
               >
                 <Image width={200} height={200} src={imageUrl}></Image>
               </Card>
 
               <Card
-                title="식물 이미지"
+                title="식물 정보"
                 css={css`
                   ${CardCss}
                 `}

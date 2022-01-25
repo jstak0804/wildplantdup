@@ -2,7 +2,7 @@
 /** @jsx jsx*/
 import React from 'react';
 import { jsx, css } from '@emotion/react';
-import { Card } from 'antd';
+import { Card } from '../components/Card';
 
 interface styledImageProps {
   src: string;
@@ -25,7 +25,7 @@ function Related() {
   return (
     <Card
       className="resultCard"
-      title="해당 식물 관련 이미지"
+      title="해당 식물 관련 이미지" //align-center
       style={{
         boxShadow: ' 0px 0px 20px 0px gray',
         alignContent: 'center',
