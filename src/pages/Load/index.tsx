@@ -15,8 +15,9 @@ const ModalMsgDiv: React.FC = ({ children }) => {
 };
 const Loading: React.FC<Props> = ({ state }) => {
   const [imageFile, setImageFile] = React.useState<null | File>(null);
+  const [reqError, setReqError] = React.useState(false);
   const [modalSate, setModalState] = useState(false);
-  const { imageUrl, setImageUrl, setAI, AI } = state;
+  const { imageUrl, setImageUrl, setAI, setParsedData } = state;
   const [value, setValue] = React.useState(4);
   const beforeUpload = useCallback((file) => {
     console.log('@@@ file', file);
@@ -33,15 +34,16 @@ const Loading: React.FC<Props> = ({ state }) => {
     setValue(e.target.value);
   }, []);
   const handleUpload = useCallback(async () => {
-    let notSendable = 0;
+    setReqError(false);
+    let notSendable = 0x0000;
     if (imageUrl === undefined || imageUrl === null) {
-      notSendable += 1;
+      notSendable |= 0x0001;
     }
     if (value === undefined || value === null || value > 3) {
-      notSendable += 2;
+      notSendable |= 0x0010;
     }
     console.log(notSendable);
-    if (notSendable > 0) {
+    if (notSendable != 0x0000) {
       setModalState(true);
       return;
     }
@@ -53,14 +55,15 @@ const Loading: React.FC<Props> = ({ state }) => {
     try {
       const rsp = await axios({
         method: 'post',
-        url: 'http://localhost:8000/imageuploadpost/',
+        url: 'https://prml.insiro.me/api/tt',
         data: formData,
       });
+      setParsedData(rsp.data);
       console.log('rsp', rsp.data); //debug print
-    } finally {
       setAI(true);
-      console.log(imageFile);
-      console.log(imageUrl);
+    } catch {
+      setReqError(true);
+      setModalState(true);
     }
   }, [imageFile, value]);
 
@@ -116,6 +119,11 @@ const Loading: React.FC<Props> = ({ state }) => {
           ''
         ) : (
           <ModalMsgDiv>분류가 선택되지 않았습니다.</ModalMsgDiv>
+        )}
+        {reqError == true ? (
+          <ModalMsgDiv>서버가 응답하지 않습니다</ModalMsgDiv>
+        ) : (
+          ''
         )}
       </Modal>
     </React.Fragment>

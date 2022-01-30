@@ -13,11 +13,14 @@ import { StateInterface } from './util';
 const Root: React.FC = () => {
   const [AI, setAI] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const [parsedData, setParsedData] = useState({});
   const states: StateInterface = {
     AI,
     imageUrl,
+    parsedData,
     setAI,
     setImageUrl,
+    setParsedData,
   };
   return (
     <Layout>{AI ? <Result state={states} /> : <Load state={states} />}</Layout>
