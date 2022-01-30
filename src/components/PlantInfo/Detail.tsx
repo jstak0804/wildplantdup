@@ -1,11 +1,10 @@
-import { Divider } from 'antd';
 import React from 'react';
-
+import { MsgBox } from './MsgBox';
 interface Props {
   data: any;
 }
 
-export const PlantDetail: React.FC<Props> = ({ data }) => {
+export const Detail: React.FC<Props> = ({ data }) => {
   return (
     <div>
       <MsgBox head="이름">{data.name}</MsgBox>
@@ -19,18 +18,6 @@ export const PlantDetail: React.FC<Props> = ({ data }) => {
       <MsgBox head="잎">{data.leaf}</MsgBox>
       <MsgBox head="이용 및 활용">{data.utilization}</MsgBox>
       <MsgBox head="출처">국가생물종지식정보시스템, 국립생물자원관</MsgBox>
-    </div>
-  );
-};
-
-interface MsgProps {
-  head: string;
-}
-const MsgBox: React.FC<MsgProps> = ({ head, children }) => {
-  return (
-    <div>
-      <Divider orientation="left">{head}</Divider>
-      <p style={{}}>{children}</p>
     </div>
   );
 };

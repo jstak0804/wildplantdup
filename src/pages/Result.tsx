@@ -8,8 +8,7 @@ import CenterContainer from '../components/CenterContainer';
 import Related from './Related';
 import { StateInterface } from '../util';
 import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
-import { PlantInfoBlock } from '../components/PlantInfoBlock';
-import { PlantDetail } from '../components/PlantsDetail';
+import { InfoBlock, Detail } from '../components/PlantInfo';
 interface Props {
   state: StateInterface;
 }
@@ -85,9 +84,10 @@ const Result: React.FC<Props> = ({ state }) => {
                     display: 'inline-block',
                   }}
                 >
-                  <PlantInfoBlock Data={parsedData}>
-                    <Button onClick={viewDetailInfo}>btn</Button>
-                  </PlantInfoBlock>
+                  <InfoBlock
+                    Data={parsedData}
+                    viewMore={viewDetailInfo}
+                  ></InfoBlock>
                 </Card>
 
                 <Card
@@ -114,7 +114,7 @@ const Result: React.FC<Props> = ({ state }) => {
         title="세부 정보"
         footer={<Button onClick={closeModal}>close</Button>}
       >
-        <PlantDetail data={parsedData} />
+        <Detail data={parsedData} />
       </Modal>
     </div>
   );
