@@ -36,7 +36,7 @@ const Loading: React.FC<Props> = ({ state }) => {
   const handleUpload = useCallback(async () => {
     setReqError(false);
     let notSendable = 0x0000;
-    if (imageUrl === undefined || imageUrl === null) {
+    if (imageUrl === undefined || imageUrl === null || imageUrl === '') {
       notSendable |= 0x0001;
     }
     if (value === undefined || value === null || value > 3) {
