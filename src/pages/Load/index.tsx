@@ -78,6 +78,7 @@ const Loading: React.FC<Props> = ({ state }) => {
     <React.Fragment>
       <Wrapper>
         <Image imageUrl={imageUrl} />
+        <div style={{ height: '0.5rem' }} />
         <Upload
           showUploadList={false}
           beforeUpload={beforeUpload}
@@ -93,7 +94,7 @@ const Loading: React.FC<Props> = ({ state }) => {
         <Button
           onClick={handleUpload}
           type="primary"
-          style={{ textAlign: 'center' }}
+          style={{ textAlign: 'center', marginLeft: '10px' }}
         >
           AI 인식 실행
         </Button>
