@@ -79,6 +79,7 @@ const Loading: React.FC<Props> = ({ state }) => {
           showUploadList={false}
           beforeUpload={beforeUpload}
           style={{ display: 'block' }}
+          accept="image/*"
         >
           <Button style={{ color: 'black' }}>
             <UploadOutlined />
