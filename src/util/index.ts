@@ -4,9 +4,11 @@ export interface StateInterface {
   AI: boolean;
   imageUrl: string;
   parsedData: any;
+  Loader: boolean;
   setAI: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
   setParsedData: Dispatch<SetStateAction<any>>;
+  setLoader: Dispatch<SetStateAction<boolean>>;
 }
 
 export function keyConvert(key: string): string {

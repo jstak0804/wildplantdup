@@ -14,16 +14,21 @@ const Root: React.FC = () => {
   const [AI, setAI] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [parsedData, setParsedData] = useState({});
+  const [Loader, setLoader] = useState<boolean>(false);
   const states: StateInterface = {
     AI,
     imageUrl,
     parsedData,
+    Loader,
     setAI,
     setImageUrl,
     setParsedData,
+    setLoader,
   };
   return (
-    <Layout>{AI ? <Result state={states} /> : <Load state={states} />}</Layout>
+    <Layout loading={Loader}>
+      {AI ? <Result state={states} /> : <Load state={states} />}
+    </Layout>
   );
 };
 

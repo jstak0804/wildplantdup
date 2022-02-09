@@ -17,7 +17,7 @@ const Loading: React.FC<Props> = ({ state }) => {
   const [imageFile, setImageFile] = React.useState<null | File>(null);
   const [reqError, setReqError] = React.useState(false);
   const [modalSate, setModalState] = useState(false);
-  const { imageUrl, setImageUrl, setAI, setParsedData } = state;
+  const { imageUrl, setImageUrl, setAI, setParsedData, setLoader } = state;
   const [value, setValue] = React.useState(4);
   const beforeUpload = useCallback((file) => {
     console.log('@@@ file', file);
@@ -52,6 +52,7 @@ const Loading: React.FC<Props> = ({ state }) => {
     console.log('aaaaaaa', value);
     formData.append('image', imageFile!);
     formData.append('aivalue', value.toString());
+    setLoader(true);
     try {
       const rsp = await axios({
         method: 'post',
@@ -64,6 +65,8 @@ const Loading: React.FC<Props> = ({ state }) => {
     } catch {
       setReqError(true);
       setModalState(true);
+    } finally {
+      setLoader(false);
     }
   }, [imageFile, value]);
 
