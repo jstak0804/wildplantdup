@@ -64,14 +64,22 @@ const Result: React.FC<Props> = ({ state }) => {
                   css={css`
                     ${CardCss}
                   `}
+                  bodyStyle={{
+                    padding: '10px',
+                  }}
                   style={{
-                    minWidth: '200px',
+                    minWidth: '220px',
                     maxWidth: '330px',
                     display: 'inline-block',
                   }}
                   title="불러온 이미지"
                 >
-                  <Image width={200} height={200} src={imageUrl}></Image>
+                  <Image
+                    width={200}
+                    height={200}
+                    style={{ margin: '0px' }}
+                    src={imageUrl}
+                  ></Image>
                 </Card>
 
                 <Card

@@ -6,15 +6,18 @@ import { Card as AntCard, CardProps } from 'antd';
 
 interface Prop {
   title?: string;
+  bodyStyle?: object;
 }
 
 export const Card: React.FC<Prop & CardProps> = ({
   children,
   title,
+  bodyStyle,
   ...props
 }) => {
   return (
     <AntCard
+      bodyStyle={bodyStyle}
       headStyle={{
         textAlign: 'center',
         borderTopLeftRadius: '22px',
