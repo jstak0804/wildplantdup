@@ -34,3 +34,5 @@ yarn-error.log*
 # production
 /dist
 
+# intelliJ
+.idea
