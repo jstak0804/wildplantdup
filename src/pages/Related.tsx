@@ -39,7 +39,7 @@ const Related: React.FC<Props> = ({ url }) => {
         marginTop: '35px',
       }}
     >
-      {url.map((item, index) => (
+      {url.map((item) => (
         <StyledImage key={item} src={item} />
       ))}
     </Card>

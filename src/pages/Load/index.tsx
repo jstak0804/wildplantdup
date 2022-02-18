@@ -120,7 +120,7 @@ const Loading: React.FC<Props> = ({ state }) => {
         ) : (
           ''
         )}
-        {value && value !== 4 ? (
+        {value !== 4 ? (
           ''
         ) : (
           <ModalMsgDiv>분류가 선택되지 않았습니다.</ModalMsgDiv>
