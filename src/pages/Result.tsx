@@ -113,7 +113,7 @@ const Result: React.FC<Props> = ({ state }) => {
               </div>
             </div>
           </Card>
-          <Related />
+          <Related url={parsedData.imgs} />
         </CenterContainer>
       </CenterContainer>
       <Modal

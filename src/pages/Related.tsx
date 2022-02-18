@@ -21,7 +21,10 @@ const StyledImage: React.FC<styledImageProps> = ({ src }) => {
   );
 };
 
-function Related() {
+interface Props {
+  url: Array<string>;
+}
+const Related: React.FC<Props> = ({ url }) => {
   return (
     <Card
       className="resultCard"
@@ -36,16 +39,10 @@ function Related() {
         marginTop: '35px',
       }}
     >
-      <StyledImage src="https://ifh.cc/g/RWIPum.jpg" />
-
-      <StyledImage src="https://ifh.cc/g/LQC5ir.jpg" />
-
-      <StyledImage src="https://ifh.cc/g/csKH16.jpg" />
-
-      <StyledImage src="https://ifh.cc/g/xzitCO.jpg" />
-
-      <StyledImage src="https://ifh.cc/g/Q7geji.jpg" />
+      {url.map((item, index) => (
+        <StyledImage key={item} src={item} />
+      ))}
     </Card>
   );
-}
+};
 export default Related;
