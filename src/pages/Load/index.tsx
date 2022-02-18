@@ -56,7 +56,7 @@ const Loading: React.FC<Props> = ({ state }) => {
     try {
       const rsp = await axios({
         method: 'post',
-        url: 'https://prml.insiro.me/api/tt',
+        url: 'https://prml.insiro.me/api/predict',
         data: formData,
       });
       setParsedData(rsp.data);
