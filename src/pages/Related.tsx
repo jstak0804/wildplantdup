@@ -36,7 +36,9 @@ const Related: React.FC<Props> = ({ url }) => {
         alignSelf: 'center',
         alignItems: 'cemter',
         minHeight: '330px',
-        marginTop: '35px',
+        margin: '10px',
+        marginTop: '20px',
+        flexGrow: '1',
       }}
     >
       {url.map((item) => (
