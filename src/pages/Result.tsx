@@ -88,7 +88,7 @@ const Result: React.FC<Props> = ({ state }) => {
                     ${CardCss}
                   `}
                   style={{
-                    maxWidth: '500px',
+                    maxWidth: '520px',
                     display: 'inline-block',
                   }}
                 >
@@ -104,7 +104,7 @@ const Result: React.FC<Props> = ({ state }) => {
                     ${CardCss}
                   `}
                   style={{
-                    maxWidth: '450px',
+                    maxWidth: '480px',
                     display: 'inline-block',
                   }}
                 >
