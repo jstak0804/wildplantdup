@@ -7,7 +7,7 @@ import { Card } from '../components/Card';
 import CenterContainer from '../components/CenterContainer';
 import Related from './Related';
 import { StateInterface } from '../util';
-import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
+import ArrowLeftOutlined from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
 import { InfoBlock, Detail } from '../components/PlantInfo';
 interface Props {
   state: StateInterface;
@@ -17,6 +17,7 @@ const CardCss = css`
   boxshadow: '0px 0px 20px 0px gray';
   height: 330px;
   margin: 25px;
+  margintop: 10px;
   min-width: 300px;
   display: inline-block;
 `;
@@ -44,82 +45,80 @@ const Result: React.FC<Props> = ({ state }) => {
     >
       <CenterContainer direction="row">
         <CenterContainer direction="column">
-          <Card bordered={false}>
-            <div>
-              <Button
-                type="primary"
-                onClick={removeImageUrl}
+          <div>
+            <Button
+              type="primary"
+              onClick={removeImageUrl}
+              style={{
+                marginLeft: '10px',
+                display: 'block',
+                left: '10px',
+                borderRadius: '10px',
+              }}
+            >
+              <ArrowLeftOutlined />
+              이전 화면
+            </Button>
+            <div style={{ display: 'flex' }}>
+              <Card
+                css={css`
+                  ${CardCss}
+                `}
+                bodyStyle={{
+                  padding: '10px',
+                }}
                 style={{
-                  marginLeft: '10px',
-                  display: 'block',
-                  left: '10px',
-                  borderRadius: '10px',
+                  minWidth: '220px',
+                  maxWidth: '330px',
+                  display: 'inline-block',
+                }}
+                title="불러온 이미지"
+              >
+                <Image
+                  width={200}
+                  height={200}
+                  style={{ margin: '0px' }}
+                  src={imageUrl}
+                ></Image>
+              </Card>
+
+              <Card
+                title="식물 정보"
+                css={css`
+                  ${CardCss}
+                `}
+                style={{
+                  maxWidth: '500px',
+                  display: 'inline-block',
                 }}
               >
-                <UploadOutlined />
-                이미지 선택
-              </Button>
-              <div style={{ display: 'flex' }}>
-                <Card
-                  css={css`
-                    ${CardCss}
-                  `}
-                  bodyStyle={{
-                    padding: '10px',
-                  }}
-                  style={{
-                    minWidth: '220px',
-                    maxWidth: '330px',
-                    display: 'inline-block',
-                  }}
-                  title="불러온 이미지"
-                >
-                  <Image
-                    width={200}
-                    height={200}
-                    style={{ margin: '0px' }}
-                    src={imageUrl}
-                  ></Image>
-                </Card>
+                <InfoBlock
+                  Data={parsedData}
+                  viewMore={viewDetailInfo}
+                ></InfoBlock>
+              </Card>
 
-                <Card
-                  title="식물 정보"
-                  css={css`
-                    ${CardCss}
-                  `}
-                  style={{
-                    maxWidth: '500px',
-                    display: 'inline-block',
-                  }}
-                >
-                  <InfoBlock
-                    Data={parsedData}
-                    viewMore={viewDetailInfo}
-                  ></InfoBlock>
-                </Card>
-
-                <Card
-                  title="성분분석 이미지"
-                  css={css`
-                    ${CardCss}
-                  `}
-                  style={{
-                    maxWidth: '450px',
-                    display: 'inline-block',
-                  }}
-                >
-                  <Image height={200} src="https://ifh.cc/g/bTYZS8.png" />
-                </Card>
-              </div>
+              <Card
+                title="성분분석 이미지"
+                css={css`
+                  ${CardCss}
+                `}
+                style={{
+                  maxWidth: '450px',
+                  display: 'inline-block',
+                }}
+              >
+                <Image height={200} src="https://ifh.cc/g/bTYZS8.png" />
+              </Card>
             </div>
-          </Card>
+          </div>
           <Related url={parsedData.imgs} />
         </CenterContainer>
       </CenterContainer>
       <Modal
         visible={ViewDetail}
         onCancel={closeModal}
-        title="세부 정보"
+        title={<b>세부 정보</b>}
         footer={<Button onClick={closeModal}>close</Button>}
       >
         <Detail data={parsedData} />

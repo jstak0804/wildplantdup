@@ -20,6 +20,8 @@ export const Card: React.FC<Prop & CardProps> = ({
       bodyStyle={bodyStyle}
       headStyle={{
         textAlign: 'center',
+        fontSize: 'large',
+        fontWeight: 'bold',
         borderTopLeftRadius: '22px',
         borderTopRightRadius: '22px',
         backgroundColor: 'rgba(220, 220, 220, 0.616)',

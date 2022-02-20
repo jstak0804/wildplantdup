@@ -27,7 +27,7 @@ const Body: React.FC = ({ children }) => {
 };
 
 const Layout: React.FC<Props> = ({ children, loading }) => (
-  <AntLayout style={{ height: '100%' }}>
+  <AntLayout style={{ height: '100%', backgroundColor: 'white' }}>
     <Body>{children}</Body>
     <Loading loading={loading} />
   </AntLayout>
