@@ -18,6 +18,11 @@ export const Wrapper: React.FC = ({ children }) => {
             minHeight: '400px',
             maxHeight: '700px',
           }}
+          headStyle={{
+            fontSize: 'large',
+            fontWeight: 'bold',
+            backgroundColor: 'rgba(220, 220, 220, 0.616)',
+          }}
         >
           {children}
         </Card>

@@ -101,6 +101,11 @@ const Loading: React.FC<Props> = ({ state }) => {
         <Card
           title="AI 실행 전 아래 항목을 선택해주세요"
           style={{ display: 'block' }}
+          headStyle={{
+            fontSize: 'large',
+            fontWeight: 'bold',
+            backgroundColor: 'rgba(220, 220, 220, 0.616)',
+          }}
         >
           <Radio.Group onChange={onChange} value={value}>
             <Radio value={0}>꽃</Radio>
