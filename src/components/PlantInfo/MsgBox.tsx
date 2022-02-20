@@ -4,7 +4,7 @@ interface MsgProps {
 }
 export const MsgBox: React.FC<MsgProps> = ({ head, children }) => {
   return (
-    <div>
+    <div style={{ margin: '1.5rem' }}>
       ▶ {head} : {children}
     </div>
   );

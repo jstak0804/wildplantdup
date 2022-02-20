@@ -16,7 +16,7 @@ export const InfoBlock: React.FC<Props> = ({ Data, viewMore }) => {
       <div>
         <div style={{ textAlign: 'right', width: '100%' }}>
           <span style={{ fontSize: '.8rem', color: 'blue' }} onClick={viewMore}>
-            ... 더 보기
+            자세히 보기
           </span>
         </div>
       </div>
