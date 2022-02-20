@@ -14,7 +14,6 @@ interface Props {
 }
 
 const CardCss = css`
-  boxshadow: '0px 0px 20px 0px gray';
   height: 330px;
   margin: 10px;
   margintop: 10px;

@@ -30,7 +30,6 @@ const Related: React.FC<Props> = ({ url }) => {
       className="resultCard"
       title="해당 식물 관련 이미지" //align-center
       style={{
-        boxShadow: ' 0px 0px 20px 0px gray',
         alignContent: 'center',
         width: '100%',
         alignSelf: 'center',
