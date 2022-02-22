@@ -13,9 +13,25 @@ interface Props {
 const ModalMsgDiv: React.FC = ({ children }) => {
   return <div style={{ margin: '1rem' }}>{children}</div>;
 };
+function checkSendable(imageFile: File | null, value: number): boolean {
+  let notSendable = false;
+  if (imageFile === undefined || imageFile === null) {
+    notSendable = true;
+  } else if (value === undefined || value === null || value > 3) {
+    notSendable = true;
+  }
+  return notSendable;
+}
+enum ReqError {
+  ServerError,
+  SelectError,
+  SizeError,
+  Normal,
+  Undefined,
+}
 const Loading: React.FC<Props> = ({ state }) => {
   const [imageFile, setImageFile] = React.useState<null | File>(null);
-  const [reqError, setReqError] = React.useState(false);
+  const [reqError, setReqError] = React.useState<ReqError>(ReqError.Normal);
   const [modalSate, setModalState] = useState(false);
   const { imageUrl, setImageUrl, setAI, setParsedData, setLoader } = state;
   const [value, setValue] = React.useState(4);
@@ -33,23 +49,14 @@ const Loading: React.FC<Props> = ({ state }) => {
     console.log('radio checked', e);
     setValue(e.target.value);
   }, []);
+
   const handleUpload = useCallback(async () => {
-    setReqError(false);
-    let notSendable = 0x0000;
-    if (imageFile === undefined || imageFile === null) {
-      notSendable |= 0x0001;
-    }
-    if (value === undefined || value === null || value > 3) {
-      notSendable |= 0x0010;
-    }
-    console.log(notSendable);
-    if (notSendable != 0x0000) {
+    setReqError(ReqError.Normal);
+    if (checkSendable(imageFile, value)) {
       setModalState(true);
       return;
     }
-    console.log('passed');
     const formData = new FormData();
-    console.log('aaaaaaa', value);
     formData.append('image', imageFile!);
     formData.append('aivalue', value.toString());
     setLoader(true);
@@ -62,8 +69,17 @@ const Loading: React.FC<Props> = ({ state }) => {
       setParsedData(rsp.data);
       console.log('rsp', rsp.data); //debug print
       setAI(true);
-    } catch {
-      setReqError(true);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const status = error.response!.status;
+        if (status === 422) {
+          setReqError(ReqError.SelectError);
+        } else {
+          setReqError(ReqError.ServerError);
+        }
+      } else {
+        setReqError(ReqError.Undefined);
+      }
       setModalState(true);
     } finally {
       setLoader(false);
@@ -96,7 +112,7 @@ const Loading: React.FC<Props> = ({ state }) => {
           type="primary"
           style={{ textAlign: 'center', marginLeft: '10px' }}
         >
-          AI 인식 실행
+          분류 AI 실행
         </Button>
         <Card
           title="AI 실행 전 아래 항목을 선택해주세요"
@@ -130,8 +146,21 @@ const Loading: React.FC<Props> = ({ state }) => {
         ) : (
           <ModalMsgDiv>분류가 선택되지 않았습니다.</ModalMsgDiv>
         )}
-        {reqError == true ? (
+        {reqError == ReqError.ServerError ? (
           <ModalMsgDiv>서버가 응답하지 않습니다</ModalMsgDiv>
+        ) : (
+          ''
+        )}
+        {reqError === ReqError.SelectError ? (
+          <div>
+            <ModalMsgDiv>현재 이미지의 항목이 올바르지 않습니다</ModalMsgDiv>
+            <ModalMsgDiv>항목을 다시 선택해 주십시오</ModalMsgDiv>
+          </div>
+        ) : (
+          ''
+        )}
+        {reqError === ReqError.Undefined ? (
+          <ModalMsgDiv>알 수 없는 에러가 발생되었습니다</ModalMsgDiv>
         ) : (
           ''
         )}
