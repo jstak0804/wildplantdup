@@ -35,7 +35,6 @@ const Result: React.FC<Props> = ({ state }) => {
   function closeModal() {
     setViewDetail(false);
   }
-  console.log(parsedData);
   return (
     <div
       css={css`

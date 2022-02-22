@@ -47,7 +47,6 @@ const Loading: React.FC<Props> = ({ state }) => {
     setLoader(true);
     const rsp = await predictRequest(imageFile!, value);
     setLoader(false);
-    console.log(rsp);
     if (!rsp.isNormal()) {
       setReqError(rsp.result);
       setModalState(true);
