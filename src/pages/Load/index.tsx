@@ -5,14 +5,12 @@ import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
 import axios from 'axios';
 import { StateInterface } from '@/util';
 import { Wrapper } from './wrapper';
-import Modal from 'antd/lib/modal/Modal';
+import Modal from './modal';
+import { ReqError } from './utils';
 interface Props {
   state: StateInterface;
 }
 
-const ModalMsgDiv: React.FC = ({ children }) => {
-  return <div style={{ margin: '1rem' }}>{children}</div>;
-};
 function checkSendable(imageFile: File | null, value: number): boolean {
   let notSendable = false;
   if (imageFile === undefined || imageFile === null) {
@@ -22,13 +20,7 @@ function checkSendable(imageFile: File | null, value: number): boolean {
   }
   return notSendable;
 }
-enum ReqError {
-  ServerError,
-  SelectError,
-  SizeError,
-  Normal,
-  Undefined,
-}
+
 const Loading: React.FC<Props> = ({ state }) => {
   const [imageFile, setImageFile] = React.useState<null | File>(null);
   const [reqError, setReqError] = React.useState<ReqError>(ReqError.Normal);
@@ -36,7 +28,6 @@ const Loading: React.FC<Props> = ({ state }) => {
   const { imageUrl, setImageUrl, setAI, setParsedData, setLoader } = state;
   const [value, setValue] = React.useState(4);
   const beforeUpload = useCallback((file) => {
-    console.log('@@@ file', file);
     setImageFile(file);
     const reader = new FileReader();
     reader.onload = () => {
@@ -46,7 +37,6 @@ const Loading: React.FC<Props> = ({ state }) => {
   }, []);
 
   const onChange = useCallback((e) => {
-    console.log('radio checked', e);
     setValue(e.target.value);
   }, []);
 
@@ -67,7 +57,6 @@ const Loading: React.FC<Props> = ({ state }) => {
         data: formData,
       });
       setParsedData(rsp.data);
-      console.log('rsp', rsp.data); //debug print
       setAI(true);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -134,37 +123,10 @@ const Loading: React.FC<Props> = ({ state }) => {
       <Modal
         visible={modalSate}
         onCancel={closeModal}
-        footer={<Button onClick={closeModal}>close</Button>}
-      >
-        {imageUrl === '' ? (
-          <ModalMsgDiv>이미지가 선택되지 않았습니다.</ModalMsgDiv>
-        ) : (
-          ''
-        )}
-        {value !== 4 ? (
-          ''
-        ) : (
-          <ModalMsgDiv>분류가 선택되지 않았습니다.</ModalMsgDiv>
-        )}
-        {reqError == ReqError.ServerError ? (
-          <ModalMsgDiv>서버가 응답하지 않습니다</ModalMsgDiv>
-        ) : (
-          ''
-        )}
-        {reqError === ReqError.SelectError ? (
-          <div>
-            <ModalMsgDiv>현재 이미지의 항목이 올바르지 않습니다</ModalMsgDiv>
-            <ModalMsgDiv>항목을 다시 선택해 주십시오</ModalMsgDiv>
-          </div>
-        ) : (
-          ''
-        )}
-        {reqError === ReqError.Undefined ? (
-          <ModalMsgDiv>알 수 없는 에러가 발생되었습니다</ModalMsgDiv>
-        ) : (
-          ''
-        )}
-      </Modal>
+        imageUrl={imageUrl}
+        value={value}
+        reqError={reqError}
+      />
     </React.Fragment>
   );
 };
