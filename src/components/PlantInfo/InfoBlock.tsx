@@ -1,6 +1,7 @@
 import React from 'react';
 import { MsgBox } from './MsgBox';
 interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Data: any;
   viewMore(): void;
 }

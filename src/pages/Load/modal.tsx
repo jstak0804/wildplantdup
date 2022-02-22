@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal as AntModal, Button } from 'antd';
-import { ReqError } from './utils';
+import { ReqError } from '../../util';
 
 interface MsgProps {
   imageUrl: string;
@@ -44,7 +44,7 @@ const ModalMsg: React.FC<MsgProps> = ({ imageUrl, value, reqError }) => {
 
 interface Props {
   visible: boolean;
-  onCancel: any;
+  onCancel: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 const Modal: React.FC<Props & MsgProps> = ({

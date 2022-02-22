@@ -2,11 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { Button, Card, Upload, Radio } from 'antd';
 import Image from '../../components/Image';
 import UploadOutlined from '@ant-design/icons/lib/icons/UploadOutlined';
-import axios from 'axios';
-import { StateInterface } from '@/util';
+import { StateInterface, ReqError, predictRequest } from '../../util';
 import { Wrapper } from './wrapper';
 import Modal from './modal';
-import { ReqError } from './utils';
 interface Props {
   state: StateInterface;
 }
@@ -46,33 +44,17 @@ const Loading: React.FC<Props> = ({ state }) => {
       setModalState(true);
       return;
     }
-    const formData = new FormData();
-    formData.append('image', imageFile!);
-    formData.append('aivalue', value.toString());
     setLoader(true);
-    try {
-      const rsp = await axios({
-        method: 'post',
-        url: 'https://prml.insiro.me/api/predict',
-        data: formData,
-      });
-      setParsedData(rsp.data);
-      setAI(true);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const status = error.response!.status;
-        if (status === 422) {
-          setReqError(ReqError.SelectError);
-        } else {
-          setReqError(ReqError.ServerError);
-        }
-      } else {
-        setReqError(ReqError.Undefined);
-      }
+    const rsp = await predictRequest(imageFile!, value);
+    setLoader(false);
+    console.log(rsp);
+    if (!rsp.isNormal()) {
+      setReqError(rsp.result);
       setModalState(true);
-    } finally {
-      setLoader(false);
+      return;
     }
+    setParsedData(rsp.data);
+    setAI(true);
   }, [imageFile, value]);
 
   const closeModal = () => {
@@ -109,7 +91,6 @@ const Loading: React.FC<Props> = ({ state }) => {
           headStyle={{
             fontSize: 'large',
             fontWeight: 'bold',
-            backgroundColor: 'rgba(220, 220, 220, 0.616)',
           }}
         >
           <Radio.Group onChange={onChange} value={value}>
