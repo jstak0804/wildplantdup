@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Image, Modal } from 'antd';
-import { Card } from '../components/Card';
-import CenterContainer from '../components/CenterContainer';
+import { Card } from '../../components/Card';
+import CenterContainer from '../../components/CenterContainer';
 import Related from './Related';
-import { StateInterface } from '../util';
+import { StateInterface } from '../../util';
 import ArrowLeftOutlined from '@ant-design/icons/lib/icons/ArrowLeftOutlined';
-import { InfoBlock, Detail } from '../components/PlantInfo';
+import { InfoBlock, Detail } from '../../components/PlantInfo';
+import { FloatView } from './FloatView';
 interface Props {
   state: StateInterface;
 }
@@ -22,6 +23,7 @@ const cardStyle: React.CSSProperties = {
 const Result: React.FC<Props> = ({ state }) => {
   const { imageUrl, parsedData, setImageUrl, setAI } = state;
   const [ViewDetail, setViewDetail] = React.useState(false);
+  const [chemicalView, setChemicalView] = React.useState(false);
   const removeImageUrl = () => {
     setAI(false);
     setImageUrl('');
@@ -32,13 +34,20 @@ const Result: React.FC<Props> = ({ state }) => {
   function closeModal() {
     setViewDetail(false);
   }
+  const openChamical = () => {
+    setChemicalView(true);
+  };
+  const closeChemical = () => {
+    setChemicalView(false);
+  };
   return (
     <div
       style={{
         marginBottom: '20px',
+        height: '100%',
       }}
     >
-      <CenterContainer direction="row">
+      <CenterContainer direction="row" display={!chemicalView}>
         <CenterContainer direction="column">
           <div style={{ display: 'flex', flexFlow: 'column' }}>
             <div style={{ flexGrow: '1' }}>
@@ -99,6 +108,8 @@ const Result: React.FC<Props> = ({ state }) => {
                   }}
                 >
                   <Image height={200} src={parsedData.chemical[0]} />
+                  <br />
+                  <span onClick={openChamical}>모두 보기</span>
                 </Card>
               </div>
             </div>
@@ -106,6 +117,11 @@ const Result: React.FC<Props> = ({ state }) => {
           </div>
         </CenterContainer>
       </CenterContainer>
+      <FloatView
+        display={chemicalView}
+        closeAction={closeChemical}
+        chemical_images={parsedData.chemical}
+      />
       <Modal
         visible={ViewDetail}
         onCancel={closeModal}

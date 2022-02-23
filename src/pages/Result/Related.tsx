@@ -1,22 +1,6 @@
 import React from 'react';
-import { Card } from '../components/Card';
-
-interface styledImageProps {
-  src: string;
-}
-const StyledImage: React.FC<styledImageProps> = ({ src }) => {
-  return (
-    <img
-      style={{
-        maxWidth: '200px',
-        height: '200px',
-        margin: '10px',
-        display: 'inline-block',
-      }}
-      src={src}
-    />
-  );
-};
+import { Card } from '../../components/Card';
+import { StyledImage } from './StyledImage';
 
 interface Props {
   url: Array<string>;

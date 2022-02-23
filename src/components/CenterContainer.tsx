@@ -4,35 +4,45 @@ import React from 'react';
 import { jsx, css } from '@emotion/react';
 interface Prop {
   direction: 'row' | 'column';
+  display?: boolean;
+  onClick?(e: React.MouseEvent<HTMLElement, MouseEvent>): void;
 }
-const BlankBox: React.FC = ({ children }) => {
+interface BlankProp {
+  onClick?(e: React.MouseEvent<HTMLElement, MouseEvent>): void;
+}
+const BlankBox: React.FC<BlankProp> = ({ children, onClick }) => {
   return (
     <div
       css={css`
         flex-grow: 1;
       `}
+      onClick={onClick}
     >
       {children}
     </div>
   );
 };
 
-const FlexWrapperStyle = css`
-  display: flex;
-  height: 100%;
-  width: 100%;
-`;
-const Container: React.FC<Prop> = ({ direction = 'row', children }) => {
+const Container: React.FC<Prop> = ({
+  direction = 'row',
+  children,
+  onClick,
+  display,
+}) => {
   return (
     <div
       css={css`
-        ${FlexWrapperStyle}
         flex-flow: ${direction};
       `}
+      style={{
+        height: '100%',
+        width: '100%',
+        display: display !== false ? 'flex' : 'none',
+      }}
     >
-      <BlankBox />
+      <BlankBox onClick={onClick} />
       <div>{children}</div>
-      <BlankBox />
+      <BlankBox onClick={onClick} />
     </div>
   );
 };
