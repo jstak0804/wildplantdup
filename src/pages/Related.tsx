@@ -1,7 +1,4 @@
-/**@jsxRuntime classic */
-/** @jsx jsx*/
 import React from 'react';
-import { jsx, css } from '@emotion/react';
 import { Card } from '../components/Card';
 
 interface styledImageProps {
@@ -10,12 +7,12 @@ interface styledImageProps {
 const StyledImage: React.FC<styledImageProps> = ({ src }) => {
   return (
     <img
-      css={css`
-        max-width: 200px;
-        height: 200px;
-        margin: 10px;
-        display: inline-block;
-      `}
+      style={{
+        maxWidth: '200px',
+        height: '200px',
+        margin: '10px',
+        display: 'inline-block',
+      }}
       src={src}
     />
   );

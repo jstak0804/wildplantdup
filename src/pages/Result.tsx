@@ -1,7 +1,4 @@
-/**@jsxRuntime classic */
-/** @jsx jsx*/
 import React from 'react';
-import { jsx, css } from '@emotion/react';
 import { Button, Image, Modal } from 'antd';
 import { Card } from '../components/Card';
 import CenterContainer from '../components/CenterContainer';
@@ -13,13 +10,13 @@ interface Props {
   state: StateInterface;
 }
 
-const CardCss = css`
-  height: 330px;
-  margin: 10px;
-  margintop: 10px;
-  min-width: 300px;
-  display: inline-block;
-`;
+const cardStyle: React.CSSProperties = {
+  height: '330px',
+  margin: '10px',
+  marginTop: '10px',
+  minWidth: '300px',
+  display: 'inline-block',
+};
 
 // eslint-disable-next-line react/prop-types
 const Result: React.FC<Props> = ({ state }) => {
@@ -37,9 +34,9 @@ const Result: React.FC<Props> = ({ state }) => {
   }
   return (
     <div
-      css={css`
-        margin-bottom: 20px;
-      `}
+      style={{
+        marginBottom: '20px',
+      }}
     >
       <CenterContainer direction="row">
         <CenterContainer direction="column">
@@ -60,9 +57,6 @@ const Result: React.FC<Props> = ({ state }) => {
               </Button>
               <div style={{ display: 'flex' }}>
                 <Card
-                  css={css`
-                    ${CardCss}
-                  `}
                   bodyStyle={{
                     padding: '10px',
                   }}
@@ -70,6 +64,7 @@ const Result: React.FC<Props> = ({ state }) => {
                     minWidth: '220px',
                     maxWidth: '330px',
                     display: 'inline-block',
+                    ...cardStyle,
                   }}
                   title="불러온 이미지"
                 >
@@ -83,12 +78,10 @@ const Result: React.FC<Props> = ({ state }) => {
                 <div style={{ flexGrow: '1' }} />
                 <Card
                   title="식물 정보"
-                  css={css`
-                    ${CardCss}
-                  `}
                   style={{
                     maxWidth: '520px',
                     display: 'inline-block',
+                    ...cardStyle,
                   }}
                 >
                   <InfoBlock
@@ -99,12 +92,10 @@ const Result: React.FC<Props> = ({ state }) => {
                 <div style={{ flexGrow: '1' }} />
                 <Card
                   title="성분분석 이미지"
-                  css={css`
-                    ${CardCss}
-                  `}
                   style={{
                     maxWidth: '480px',
                     display: 'inline-block',
+                    ...cardStyle,
                   }}
                 >
                   <Image height={200} src={parsedData.chemical[0]} />
