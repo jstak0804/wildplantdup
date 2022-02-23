@@ -107,7 +107,7 @@ const Result: React.FC<Props> = ({ state }) => {
                     display: 'inline-block',
                   }}
                 >
-                  <Image height={200} src="https://ifh.cc/g/bTYZS8.png" />
+                  <Image height={200} src={parsedData.chemical[0]} />
                 </Card>
               </div>
             </div>
