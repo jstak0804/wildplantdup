@@ -11,7 +11,8 @@ interface props {
 
 const WrapperStyle: React.CSSProperties = {
   minWidth: '500px',
-  maxWidth: '1000px',
+  maxWidth: '1070px',
+  margin: '1rem',
 };
 
 export const FloatView: React.FC<props> = ({
@@ -23,20 +24,20 @@ export const FloatView: React.FC<props> = ({
     <div
       style={{
         height: '90%',
-        width: '90%',
+        width: '100%',
         padding: '20px',
         display: display ? 'block' : 'none',
         position: 'relative',
       }}
     >
-      <div
-        style={{ width: '100%', textAlign: 'right', padding: '3rem' }}
-        onClick={closeAction}
-      >
-        <CloseOutlined onClick={closeAction} />
-      </div>
       <Container direction="row" onClick={closeAction}>
         <Container direction="column" onClick={closeAction}>
+          <div
+            style={{ width: '100%', textAlign: 'right', paddingRight: '1rem' }}
+            onClick={closeAction}
+          >
+            <CloseOutlined onClick={closeAction} />
+          </div>
           <div style={WrapperStyle}>
             <Card title={'성분 분석 이미지'}>
               {chemical_images.map((item) => (

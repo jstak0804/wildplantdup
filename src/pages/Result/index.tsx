@@ -73,6 +73,7 @@ const Result: React.FC<Props> = ({ state }) => {
                     minWidth: '220px',
                     maxWidth: '330px',
                     display: 'inline-block',
+                    textAlign: 'center',
                     ...cardStyle,
                   }}
                   title="불러온 이미지"
@@ -104,12 +105,19 @@ const Result: React.FC<Props> = ({ state }) => {
                   style={{
                     maxWidth: '480px',
                     display: 'inline-block',
+                    textAlign: 'center',
                     ...cardStyle,
                   }}
                 >
                   <Image height={200} src={parsedData.chemical[0]} />
-                  <br />
-                  <span onClick={openChamical}>모두 보기</span>
+                  <div style={{ width: '100%', textAlign: 'right' }}>
+                    <span
+                      style={{ fontSize: '.8rem', color: 'blue' }}
+                      onClick={openChamical}
+                    >
+                      모두 보기
+                    </span>
+                  </div>
                 </Card>
               </div>
             </div>
