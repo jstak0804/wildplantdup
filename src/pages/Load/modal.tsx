@@ -16,14 +16,14 @@ const ModalMsg: React.FC<MsgProps> = ({ imageUrl, value, reqError }) => {
   if (reqError === ReqError.SizeError)
     return <ModalMsgDiv>이미지가 너무 큽니다.</ModalMsgDiv>;
   if (reqError === ReqError.ServerError)
-    return <ModalMsgDiv>서버가 응답하지 않습니다</ModalMsgDiv>;
+    return <ModalMsgDiv>서버가 응답하지 않습니다.</ModalMsgDiv>;
   if (reqError === ReqError.Undefined)
-    return <ModalMsgDiv>알 수 없는 에러가 발생되었습니다</ModalMsgDiv>;
+    return <ModalMsgDiv>알 수 없는 에러가 발생되었습니다.</ModalMsgDiv>;
   if (reqError === ReqError.SelectError)
     return (
       <React.Fragment>
-        <ModalMsgDiv>현재 이미지의 항목이 올바르지 않습니다</ModalMsgDiv>
-        <ModalMsgDiv>항목을 다시 선택해 주십시오</ModalMsgDiv>
+        <ModalMsgDiv>현재 이미지의 항목이 올바르지 않습니다.</ModalMsgDiv>
+        <ModalMsgDiv>항목을 다시 선택해 주십시오.</ModalMsgDiv>
       </React.Fragment>
     );
   return (
@@ -36,7 +36,7 @@ const ModalMsg: React.FC<MsgProps> = ({ imageUrl, value, reqError }) => {
       {value !== 4 ? (
         ''
       ) : (
-        <ModalMsgDiv>분류가 선택되지 않았습니다.</ModalMsgDiv>
+        <ModalMsgDiv>아래 항목이 선택되지 않았습니다.</ModalMsgDiv>
       )}
     </React.Fragment>
   );
