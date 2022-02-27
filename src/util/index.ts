@@ -70,7 +70,7 @@ export async function predictRequest(
   try {
     const rsp = await axios({
       method: 'post',
-      url: 'https://prml.insiro.me/api/predict',
+      url: '/api/predict',
       data: formData,
     });
     ret.data = rsp.data;
