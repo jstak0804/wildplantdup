@@ -82,7 +82,7 @@ const Loading: React.FC<Props> = ({ state }) => {
           type="primary"
           style={{ textAlign: 'center', marginLeft: '10px' }}
         >
-          AI 실행
+          AI 분석
         </Button>
         <Card
           title="AI 실행 전 아래 항목을 선택해주세요"
